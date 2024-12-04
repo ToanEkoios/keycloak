@@ -1,0 +1,21 @@
+project-root/
+├── src/
+│   ├── auth/
+│   │   ├── auth.module.ts
+│   │   ├── auth.service.ts
+│   │   ├── keycloak.guard.ts
+│   │   └── keycloak.strategy.ts
+│   ├── common/
+│   │   ├── filters/
+│   │   │   └── http-exception.filter.ts
+│   │   ├── interceptors/
+│   │   │   └── logging.interceptor.ts
+│   │   └── logger/
+│   │       └── winston-logger.service.ts
+│   ├── app.module.ts
+│   ├── main.ts
+├── .env
+├── nest-cli.json
+├── package.json
+├── tsconfig.json
+└── tsconfig.build.json

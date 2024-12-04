@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:20.0.3
+    command: start-prod --features=scripts --http-port=8080
+    environment:
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+      - DB_VENDOR=POSTGRES
+      - DB_ADDR=postgres
+      - DB_DATABASE=keycloak
+      - DB_USER=keycloak
+      - DB_PASSWORD=keycloak
+      - JDBC_PARAMS="ssl=false"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    restart: always
+
+  postgres:
+    image: postgres:13
+    environment:
+      - POSTGRES_DB=keycloak
+      - POSTGRES_USER=keycloak
+      - POSTGRES_PASSWORD=keycloak
+    volumes:
+      - ./keycloak-postgres-data:/var/lib/postgresql/data
+    restart: always
